@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SCREEN_H
+#define SCREEN_H
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -10,3 +11,5 @@ void controlScreen(uint8_t direction);
 void setupTransmitter(void);
 void transmitCode(uint8_t* code, uint8_t length);
 void transmit(uint8_t code);
+
+#endif

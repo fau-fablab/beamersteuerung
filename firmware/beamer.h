@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BEAMER_H
+#define BEAMER_H
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -51,3 +52,5 @@
 void setupProjector(void);
 uint8_t setProjectorValue(uint16_t type, uint8_t value);
 uint8_t getProjectorValue(uint16_t type);
+
+#endif
