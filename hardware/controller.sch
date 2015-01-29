@@ -67,6 +67,7 @@
 <layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="99" name="SpiceOrder" color="5" fill="1" visible="yes" active="yes"/>
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
@@ -12254,6 +12255,8 @@ diameter 2 mm, horizontal, grid 7.62 mm</description>
 <text x="2.54" y="-2.3114" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="A" x="-2.54" y="0" visible="off" length="short" direction="pas"/>
 <pin name="C" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<text x="-2.54" y="0" size="0.4064" layer="99" align="center">SpiceOrder 1</text>
+<text x="2.54" y="0" size="0.4064" layer="99" align="center">SpiceOrder 2</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -17204,6 +17207,7 @@ type RDH, grid 15 mm</description>
 <part name="JP3" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="JP7" library="pinhead" deviceset="PINHD-1X4" device=""/>
 <part name="P+6" library="supply1" deviceset="+5V" device=""/>
+<part name="D5" library="diode" deviceset="1N4148" device="DO35-10"/>
 </parts>
 <sheets>
 <sheet>
@@ -17285,6 +17289,7 @@ type RDH, grid 15 mm</description>
 <instance part="JP3" gate="A" x="127" y="104.14"/>
 <instance part="JP7" gate="A" x="127" y="127"/>
 <instance part="P+6" gate="1" x="134.62" y="83.82" rot="R90"/>
+<instance part="D5" gate="G$1" x="200.66" y="58.42" rot="R270"/>
 </instances>
 <busses>
 </busses>
@@ -17549,6 +17554,10 @@ type RDH, grid 15 mm</description>
 <segment>
 <pinref part="K1" gate="1" pin="2"/>
 <pinref part="P+10" gate="1" pin="+5V"/>
+<pinref part="D5" gate="G$1" pin="C"/>
+<wire x1="190.5" y1="53.34" x2="200.66" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="200.66" y1="53.34" x2="200.66" y2="55.88" width="0.1524" layer="91"/>
+<junction x="190.5" y="53.34"/>
 </segment>
 <segment>
 <pinref part="JP3" gate="A" pin="1"/>
@@ -17815,6 +17824,10 @@ type RDH, grid 15 mm</description>
 <pinref part="K1" gate="1" pin="1"/>
 <wire x1="177.8" y1="66.04" x2="190.5" y2="66.04" width="0.1524" layer="91"/>
 <wire x1="190.5" y1="66.04" x2="190.5" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="D5" gate="G$1" pin="A"/>
+<wire x1="190.5" y1="66.04" x2="200.66" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="200.66" y1="66.04" x2="200.66" y2="60.96" width="0.1524" layer="91"/>
+<junction x="190.5" y="66.04"/>
 </segment>
 </net>
 </nets>
