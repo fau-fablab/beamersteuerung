@@ -42,7 +42,17 @@ void getProjectorState(void) {
 	}
 }
 
+void setRelay(uint8_t state) {
+	if(state > 0) {
+		PORTD |= (1<<PD7);
+	} else {
+		PORTD &= ~(1<<PD7);
+	}
+}
+
 int main(void) {
+	
+	DDRD |= (1<<PD7);
 
 	setupControls();
 	
@@ -58,19 +68,27 @@ int main(void) {
 
   
 	while(1) {
-	if(getButtonState() & downButton) {
-		transmitCode(downCode, 25);
-	} else if(getButtonState() & upButton) {
-			transmitCode(upCode, 25);
-	} else if(getButtonState() & srcButton) {
-		setNextSource();
-	} else if(getButtonState() & onButton) {
-		setProjectorValue(POWER, 1);
-	} else if(getButtonState() & offButton) {
-		setProjectorValue(POWER, 0);
-	}
+		uint8_t buttons = getButtonState();
+		if(buttons & downButton) {
+			for(uint8_t i = 0; i < 20; i++){
+				transmitCode(downCode, 25);
+			}
+		} else if(buttons & upButton) {
+			for(uint8_t i = 0; i < 20; i++){
+				transmitCode(upCode, 25);
+			}	
+		} else if(buttons & srcButton) {
+			setNextSource();
+			setLeds(1);
+		} else if(buttons & onButton) {
+			setProjectorValue(POWER, 1);
+			setRelay(1);
+		} else if(buttons & offButton) {
+			setProjectorValue(POWER, 0);
+			setRelay(0);
+		}
 	getProjectorState();
-	_delay_ms(500);
+	 _delay_ms(200);
 	
 }
 }

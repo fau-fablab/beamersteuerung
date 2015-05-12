@@ -1,7 +1,7 @@
 CC=avr-gcc
 CFLAGS=-Wall -O2 -DF_CPU=$(F_CPU) -mmcu=$(MCU)
 MCU=atmega8
-F_CPU=12000000L
+F_CPU=16000000L
 
 
 PROGNAME = beamersteuerung
